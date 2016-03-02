@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21 Feb 2016 9:49:28 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Client" table="client" catalog="clienteledbsystem" optimistic-lock="version">
+        <composite-id name="id" class="model.ClientId">
+            <key-property name="clientId" type="int">
+                <column name="client_id" />
+            </key-property>
+            <key-property name="occupationJobId" type="int">
+                <column name="occupation_job_id" />
+            </key-property>
+            <key-property name="accountAccountId" type="int">
+                <column name="account_account_id" />
+            </key-property>
+            <key-property name="insuranceInsuranceId" type="int">
+                <column name="insurance_insurance_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="account" class="model.Account" update="false" insert="false" fetch="select">
+            <column name="account_account_id" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="insurance" class="model.Insurance" update="false" insert="false" fetch="select">
+            <column name="insurance_insurance_id" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="occupation" class="model.Occupation" update="false" insert="false" fetch="select">
+            <column name="occupation_job_id" not-null="true" unique="true" />
+        </many-to-one>
+        <property name="firstName" type="string">
+            <column name="first_name" length="45" />
+        </property>
+        <property name="middleName" type="string">
+            <column name="middle_name" length="45" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="45" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="200" />
+        </property>
+        <property name="gender" type="string">
+            <column name="gender" length="10" />
+        </property>
+        <property name="maritalStatus" type="string">
+            <column name="marital_status" length="10" />
+        </property>
+        <property name="cellNumber" type="java.lang.Integer">
+            <column name="cell_number" />
+        </property>
+    </class>
+</hibernate-mapping>

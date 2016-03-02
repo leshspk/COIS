@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21 Feb 2016 9:49:28 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.User" table="user" catalog="clienteledbsystem" optimistic-lock="version">
+        <composite-id name="id" class="model.UserId">
+            <key-property name="userName" type="string">
+                <column name="user_name" length="200" />
+            </key-property>
+            <key-property name="accountAccountId" type="int">
+                <column name="account_account_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="account" class="model.Account" update="false" insert="false" fetch="select">
+            <column name="account_account_id" not-null="true" unique="true" />
+        </many-to-one>
+        <property name="userPassword" type="string">
+            <column name="user_password" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21 Feb 2016 9:49:28 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Occupation" table="occupation" catalog="clienteledbsystem" optimistic-lock="version">
+        <id name="jobId" type="int">
+            <column name="job_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="jobType" type="string">
+            <column name="job_type" length="100" />
+        </property>
+        <property name="monthlySalary" type="java.lang.Double">
+            <column name="monthly_salary" precision="22" scale="0" />
+        </property>
+        <set name="clients" table="client" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="occupation_job_id" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="model.Client" />
+        </set>
+    </class>
+</hibernate-mapping>

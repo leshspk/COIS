@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21 Feb 2016 9:49:28 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Car" table="car" catalog="clienteledbsystem" optimistic-lock="version">
+        <composite-id name="id" class="model.CarId">
+            <key-property name="policyId" type="int">
+                <column name="policy_id" />
+            </key-property>
+            <key-property name="insuranceInsuranceId" type="int">
+                <column name="insurance_insurance_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="insurance" class="model.Insurance" update="false" insert="false" fetch="select">
+            <column name="insurance_insurance_id" not-null="true" unique="true" />
+        </many-to-one>
+        <property name="carType" type="string">
+            <column name="car_type" length="100" />
+        </property>
+        <property name="yearModel" type="date">
+            <column name="year_model" length="0" />
+        </property>
+        <property name="monthlyPay" type="java.lang.Double">
+            <column name="monthly_pay" precision="22" scale="0" />
+        </property>
+        <property name="carcol" type="string">
+            <column name="carcol" length="45" unique="true" />
+        </property>
+    </class>
+</hibernate-mapping>

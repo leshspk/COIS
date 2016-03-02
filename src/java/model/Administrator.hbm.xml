@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 21 Feb 2016 9:49:28 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Administrator" table="administrator" catalog="clienteledbsystem" optimistic-lock="version">
+        <composite-id name="id" class="model.AdministratorId">
+            <key-property name="adminName" type="string">
+                <column name="admin_name" length="200" />
+            </key-property>
+            <key-property name="accountAccountId" type="int">
+                <column name="account_account_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="account" class="model.Account" update="false" insert="false" fetch="select">
+            <column name="account_account_id" not-null="true" unique="true" />
+        </many-to-one>
+        <property name="adminPassword" type="string">
+            <column name="admin_password" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
