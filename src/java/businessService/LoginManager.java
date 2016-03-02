@@ -25,7 +25,8 @@ public class LoginManager {
         } finally { 
         }
      }
-        public Account searchAccount(int pi_id,String aType)
+        public Account searchAccount(int pi_id,String aType){
+        String tasks;
         Session session = null;
         Transaction tx = null;
         Account ac = null;
